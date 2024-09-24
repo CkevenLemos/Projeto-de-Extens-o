@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animais Cadastrados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .filter-icon {
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 24px;
+            vertical-align: middle;
+        }
+
+        #filter-form {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            Animais Cadastrados
+            <span class="filter-icon" onclick="toggleFilter()">🔍</span>
+        </h1>
+
+        <div id="filter-form">
+            <form method="GET" action="{{ url_for('listar_animais') }}">
+                <label for="tipo">Tipo de Animal:</label>
+                <input type="text" id="tipo" name="tipo">
+
+                <label for="cor">Cor da Pelagem:</label>
+                <input type="text" id="cor" name="cor">
+
+                <label for="condicao_saude">Condição de Saúde:</label>
+                <input type="text" id="condicao_saude" name="condicao_saude">
+
+                <div class="button-group">
+                    <button type="submit" class="btn">Filtrar</button>
+                    <a href="{{ url_for('index') }}" class="btn">Voltar</a>
+                </div>
+            </form>
+        </div>
+
+        <ul>
+            {% for animal in animais %}
+            <li>
+                <strong>Nome:</strong> {{ animal['nome'] }} <br>
+                <strong>Tipo:</strong> {{ animal['tipo'] }} <br>
+                <strong>Data de Chegada:</strong> {{ animal['data_chegada'] }} <br>
+                <strong>Data de Saída:</strong> {{ animal['data_saida'] }} <br>
+                <strong>Cor:</strong> {{ animal['cor'] }} <br>
+                <strong>Condição de Saúde:</strong> {{ animal['condicao_saude'] }} <br>
+            </li>
+            {% endfor %}
+        </ul>
+
+
+    </div>
+
+    <script>
+        function toggleFilter() {
+            var filterForm = document.getElementById('filter-form');
+            if (filterForm.style.display === 'none' || filterForm.style.display === '') {
+                filterForm.style.display = 'block';
+            } else {
+                filterForm.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

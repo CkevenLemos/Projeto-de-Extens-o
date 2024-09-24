@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Animais da ONG</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Cadastro de Animais da ONG</h1>
+    
+    <!-- Contêiner para centralizar o botão -->
+    <div style="text-align: center;">
+        <a href="{{ url_for('cadastro') }}" class="btn">Cadastrar Novo Animal</a>
+    </div>
+    
+    <ul>
+        {% for animal in animais %}
+        <li>
+            <strong>Nome:</strong> {{ animal.nome }}<br>
+            <strong>Espécie:</strong> {{ animal.especie }}<br>
+            <strong>Data de Chegada:</strong> {{ animal.data_chegada }}<br>
+            <strong>Data de Saída:</strong> {{ animal.data_saida }}<br>
+            <strong>Cor da Pelagem:</strong> {{ animal.cor_pelagem }}<br>
+            <strong>Condição de Saúde:</strong> {{ animal.condicao_saude }}<br>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

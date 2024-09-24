@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Animais</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Cadastro de Animais</h1>
+    <div class="container">
+        <form method="POST" action="{{ url_for('cadastro') }}" class="form-cadastro">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br>
+
+            <label for="especie">Espécie:</label>
+            <input type="text" id="especie" name="especie" required><br>
+
+            <label for="data_chegada">Data de Chegada:</label>
+            <input type="date" id="data_chegada" name="data_chegada" required><br>
+
+            <label for="data_saida">Data de Saída:</label>
+            <input type="date" id="data_saida" name="data_saida"><br>
+
+            <label for="cor_pelagem">Cor da Pelagem:</label>
+            <input type="text" id="cor_pelagem" name="cor_pelagem" required><br>
+
+            <label for="condicao_saude">Condição de Saúde:</label>
+            <input type="text" id="condicao_saude" name="condicao_saude" required><br>
+
+            <button type="submit" class="btn-cadastro">Cadastrar</button> 
+
+            <a href="{{ url_for('listar_animais') }}" class="btn">Animais</a>
+        </form>
+    </div>
+</body>
+</html>
